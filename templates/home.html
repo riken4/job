@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Miteri Mart - Your Online Shopping Destination{% endblock %}
+
+{% block content %}
+
+<!-- Slider Section -->
+<section class="container-fluid px-3 ">
+    <div class="slider-wrapper position-relative mt-5 py-4">
+        <div class="slider shadow-sm rounded">
+            <img  id="slider-1" src="{% static 'images/download (1).jpg' %}"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=1';">
+            <img id="slider-2" src="{% static 'images/download.jpg' %}"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=2';">
+            <img id="slider-3" src="{% static 'images/download2.jpg' %}"
+                 onerror="this.onerror=null;this.src='https://picsum.photos/1200/400?random=3';">
+        </div>
+        <button class="slider-arrow slider-arrow-left" type="button" aria-label="Previous slide">&#10094;</button>
+        <button class="slider-arrow slider-arrow-right" type="button" aria-label="Next slide">&#10095;</button>
+        <div class="slider-nav">
+            <a href="#slider-1"></a>
+            <a href="#slider-2"></a>
+            <a href="#slider-3"></a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="py-3">
+    <div class="container">
+        <!-- Row: Featured Products -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Featured Products</h2>
+            <a href="{% url 'store:product_list' %}" class="btn btn-outline-primary btn-sm">View All Products</a>
+        </div>
+
+        <!-- Product Row -->
+        <div class="row g-3">
+            <!-- Product 1 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card product-card h-100 shadow rounded">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="{% static 'images/apple.jpg' %}" class="img-fluid mb-2" alt="Apple"
+                                 style="max-height:160px; object-fit:contain;">
+                        </div>
+                        <h6 class="product-name py-2 text-start">Apple</h6>
+                        <p class="stock-status text-start mb-1 text-success">In stock</p>
+                        <div class="price text-start">
+                            <span class="old-price text-muted text-decoration-line-through me-2">Rs. 250</span>
+                            <span class="best-price fw-bold text-danger">Rs. 200</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <label for="qty1" class="mb-0">Quantity:</label>
+                                <input type="number" id="qty1" name="qty1" class="form-control form-control-sm" min="1"
+                                       max="10" value="1" style="width:60px; text-align:center;">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-success">🛒 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card product-card h-100 shadow rounded">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="{% static 'images/cherry.jpg' %}" class="img-fluid mb-2" alt="Cherry"
+                                 style="max-height:160px; object-fit:contain;">
+                        </div>
+                        <h6 class="product-name py-2 text-start">Cherry</h6>
+                        <p class="stock-status text-start mb-1 text-success">In stock</p>
+                        <div class="price text-start">
+                            <span class="old-price text-muted text-decoration-line-through me-2">Rs. 300</span>
+                            <span class="best-price fw-bold text-danger">Rs. 250</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <label for="qty2" class="mb-0">Quantity:</label>
+                                <input type="number" id="qty2" name="qty2" class="form-control form-control-sm" min="1"
+                                       max="10" value="1" style="width:60px; text-align:center;">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-success">🛒 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card product-card h-100 shadow rounded">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="{% static 'images/cherry.jpg' %}" class="img-fluid mb-2" alt="Cherry"
+                                 style="max-height:160px; object-fit:contain;">
+                        </div>
+                        <h6 class="product-name py-2 text-start">Cherry</h6>
+                        <p class="stock-status text-start mb-1 text-success">In stock</p>
+                        <div class="price text-start">
+                            <span class="old-price text-muted text-decoration-line-through me-2">Rs. 150</span>
+                            <span class="best-price fw-bold text-danger">Rs. 120</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <label for="qty3" class="mb-0">Quantity:</label>
+                                <input type="number" id="qty3" name="qty3" class="form-control form-control-sm" min="1"
+                                       max="10" value="1" style="width:60px; text-align:center;">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-success">🛒 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="card product-card h-100 shadow rounded">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="{% static 'images/Strawberry.jpg' %}" class="img-fluid mb-2" alt="Strawberry"
+                                 style="max-height:160px; object-fit:contain;">
+                        </div>
+                        <h6 class="product-name py-2 text-start">Strawberry</h6>
+                        <p class="stock-status text-start mb-1 text-success">In stock</p>
+                        <div class="price text-start">
+                            <span class="old-price text-muted text-decoration-line-through me-2">Rs. 400</span>
+                            <span class="best-price fw-bold text-danger">Rs. 350</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mt-2">
+                            <div class="d-flex align-items-center gap-2">
+                                <label for="qty4" class="mb-0">Quantity:</label>
+                                <input type="number" id="qty4" name="qty4" class="form-control form-control-sm" min="1"
+                                       max="10" value="1" style="width:60px; text-align:center;">
+                            </div>
+                            <button type="button" class="btn btn-sm btn-success">🛒 Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-2">
+    <div class="container">
+        <h2 class="mb-3 text-center">Shop by Category</h2>
+        <div class="category-container d-flex overflow-auto ">
+            <div class="category-item text-center shadow-sm rounded ">
+                <img src="{% static 'images/fruit.jpg' %}" class="mb-2" width="60" alt="Fruit">
+                <div class="fw-bold">Fruits</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/veg.jpg' %}" class="mb-2" width="60" alt="Vegetable">
+                <div class="fw-bold">Vegetable</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/soft.jpg' %}" class="mb-2" width="60" alt="Soft Drink">
+                <div class="fw-bold">Soft Drink</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/hard.jpg' %}" class="mb-2" width="60" alt="Hard Drink">
+                <div class="fw-bold">Hard Drink</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/fruit.jpg' %}" class="mb-2" width="60" alt="Fruit">
+                <div class="fw-bold">Fruits</div>
+            </div>
+            <div class="category-item text-centershadow-sm rounded">
+                <img src="{% static 'images/veg.jpg' %}" class="mb-2" width="60" alt="Vegetable">
+                <div class="fw-bold">Vegetable</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/soft.jpg' %}" class="mb-2" width="60" alt="Soft Drink">
+                <div class="fw-bold">Soft Drink</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/hard.jpg' %}" class="mb-2" width="60" alt="Hard Drink">
+                <div class="fw-bold">Hard Drink</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/fruit.jpg' %}" class="mb-2" width="60" alt="Fruit">
+                <div class="fw-bold">Fruits</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/veg.jpg' %}" class="mb-2" width="60" alt="Vegetable">
+                <div class="fw-bold">Vegetable</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/soft.jpg' %}" class="mb-2" width="60" alt="Soft Drink">
+                <div class="fw-bold">Soft Drink</div>
+            </div>
+            <div class="category-item text-center shadow-sm rounded">
+                <img src="{% static 'images/hard.jpg' %}" class="mb-2" width="60" alt="Hard Drink">
+                <div class="fw-bold">Hard Drink</div>
+            </div>
+            
+            <!-- Add more categories as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="footer py-5 bg-body-tertiary text-black text-align-center ">
+    <center>   <h1 class="">Footer</h1>
+</center>
+    <!-- <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3 class="fw-bold ">Footer</h3>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+{% endblock %}
