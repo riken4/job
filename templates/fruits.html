@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home - Miteri Mart{% endblock %}
+{% block title %}cat.fruit - Miteri Mart{% endblock %}
 
 {% block extra_css %}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<link href="{% static 'css/fruit.css' %}" rel="stylesheet">
+<link href="{% static 'css/veg.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-  <div class="container-fluid px-4">
-
+   <div class="container-fluid px-4 mt-4">
         <!-- Row for sidebar + main content -->
         <div class="row">
             <!-- Filter Sidebar (Left) -->
@@ -22,12 +21,12 @@
                     <div class="price-input">
                         <div class="field">
                             <span>Min</span>
-                            <input type="number" class="input-min" value="2500">
+                            <input type="number" class="input-min" value="0">
                         </div>
                         <div class="separator">-</div>
                         <div class="field">
                             <span>Max</span>
-                            <input type="number" class="input-max" value="7500">
+                            <input type="number" class="input-max" value="10000">
                         </div>
                     </div>
                     <div class="slider">
@@ -35,7 +34,7 @@
                     </div>
                     <div class="range-input">
                         <input type="range" class="range-min" min="0" max="10000" value="0" step="100">
-                        <input type="range" class="range-max" min="0" max="10000" value="1000" step="100">
+                        <input type="range" class="range-max" min="0" max="10000" value="500" step="100">
                     </div>
                     <div class="text-center mt-4">
                         <button class="filter-btn">Apply Filter</button>
@@ -57,17 +56,22 @@
                     </div>
 
                     <div id="product-grid" class="row g-3">
-                        <!-- Example product cards -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
-                                <div class="card h-100 shadow-sm rounded">
+                        <!-- Example Product -->
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 product-item" 
+                             data-categories="miscellaneous" 
+                             data-tags="new-arrivals" 
+                             data-brand="fortune"
+                             data-name="apple">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <div class="card h-100 shadow-sm rounded product-card">
                                     <div class="card-body">
-                                        <div class="text-center">
-                                            <img src="{% static 'images/apple.jpg' %}" class="img-fluid mb-2" alt="Apple"
-                                                style="max-height:160px; object-fit:contain;">
-                                            <div class="discount-badge">-50%</div>
+                                        <div class="text-center position-relative">
+                                            <img src="{% static 'images/apple.jpg' %}"
+                                                 class="img-fluid mb-2" alt="Apple"
+                                                 style="max-height:160px; object-fit:contain;">
+                                            <div class="discount-badge">-20%</div>
                                         </div>
-                                        <h6 class="product-name py-2 text-start">Apple</h6>
+                                        <h6 class="product-name py-2 text-start">Fresh Red Apple</h6>
                                         <p class="stock-status out-of-stock"><i class="fas fa-times-circle"></i> Out of stock</p>
                                         <div class="price text-start">
                                             <span class="old-price text-muted text-decoration-line-through me-2">Rs. 250</span>
@@ -81,38 +85,7 @@
                             </a>
                         </div>
 
-                        {% comment %}
-                        You can also loop over a products list:
-                        {% for product in products %}
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
-                                <div class="card h-100 shadow-sm rounded">
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <img src="{% static 'images/apple.jpg' %}" class="img-fluid mb-2" alt="">
-                                            {% if product.discount %}
-                                            <div class="discount-badge">-{{ product.discount }}%</div>
-                                            {% endif %}
-                                        </div>
-                                        <h6 class="product-name py-2 text-start">{{ product.name }}</h6>
-                                        {% if product.stock > 0 %}
-                                        <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock</p>
-                                        {% else %}
-                                        <p class="stock-status out-of-stock"><i class="fas fa-times-circle"></i> Out of stock</p>
-                                        {% endif %}
-                                        <div class="price text-start">
-                                            <span class="old-price text-muted text-decoration-line-through me-2">Rs. {{ product.old_price }}</span>
-                                            <span class="best-price fw-bold text-danger">Rs. {{ product.price }}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-between mt-2">
-                                            <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        {% endfor %}
-                        {% endcomment %}
+                        <!-- ... -->
                     </div>
                 </div>
             </div>
@@ -120,19 +93,23 @@
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center mt-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                     <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
                 </ul>
             </nav>
         </div>
-
     </div>
+
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/fruit.js' %}"></script>
+<script src="{% static 'js/veg.js' %}"></script>
 {% endblock %}

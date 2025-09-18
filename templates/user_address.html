@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cat.fruit - Miteri Mart{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="{% static 'css/veg.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+   <div class="container-fluid">
+    <div class="row">
+
+      <!-- Sidebar -->
+      <div class="col-md-3 col-lg-2 dashboard-menu">
+        <div class="list-group">
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_home') ? 'active' : '' }}">
+            <i class="fa fa-chart-line"></i> Dashboard
+          </a>
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_order') ? 'active' : '' }}">
+            <i class="fa fa-bag-shopping"></i> Order
+          </a>
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_wishlist') ? 'active' : '' }}">
+            <i class="fa fa-heart"></i> Wishlist
+          </a>
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_loyalty') ? 'active' : '' }}">
+            <i class="fa fa-coins"></i> Loyalty Points
+          </a>
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_address') ? 'active' : '' }}">
+            <i class="fa fa-location-dot"></i> My Address
+          </a>
+          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_account') ? 'active' : '' }}">
+            <i class="fa fa-user"></i> Account Details
+          </a>
+          <a href="" class="list-group-item list-group-item-action">
+            <i class="fa fa-right-from-bracket"></i> Log Out
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-9 col-lg-10 dashboard-content">
+        <h2>My Address</h2>
+        <div class="row">
+          <!-- Billing Address -->
+          <div class="col-md-6">
+            <div class="address-box">
+              <h5>Billing Address</h5>
+              <p>{{ $billing->city ?? 'Kathmandu' }}<br>
+                 {{ $billing->street ?? '2' }}<br>
+                 {{ $billing->country ?? 'Nepal' }}<br>
+                 {{ $billing->zipcode ?? '44000' }}
+              </p>
+              <a href="">Edit</a>
+            </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="col-md-6">
+            <div class="address-box">
+              <h5>Shipping Address</h5>
+              <p>{{ $shipping->city ?? 'N/A' }}<br>
+                 {{ $shipping->street ?? 'N/A' }}<br>
+                 {{ $shipping->country ?? 'N/A' }}<br>
+                 {{ $shipping->zipcode ?? 'N/A' }}
+              </p>
+              <a href="">Edit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/.js' %}"></script>
+{% endblock %}

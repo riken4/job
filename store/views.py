@@ -24,3 +24,8 @@ def veg(request):
 def flash_products(request):
     return render(request, 'flash_products.html')
 
+def cart(request):
+    return render(request, 'cart.html')
+
+def user_home(request):
+    return render(request, 'user_home.html')

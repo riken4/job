@@ -37,27 +37,6 @@
 .filter-btn:hover {
   background: #138496;
 }
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-bottom: 2rem;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-        }
-
         .discount-badge {
             position: absolute;
             top: 10px;
@@ -70,13 +49,7 @@
             font-weight: bold;
         }
 
-        .product-name {
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-size: 1.7em; /* 2 times parent element's font size */
-}
-
+  
       .stock-status {
     margin: 8px 0; /* adjust top/bottom margin */
 }
@@ -90,20 +63,7 @@
             color: #dc3545;
         }
 
-        .price span {
-            font-size: 0.9rem;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #6c757d;
-            margin-right: 0.5rem;
-        }
-
-        .best-price {
-            font-weight: bold;
-            color: #dc3545;
-        }
+    
 
         .sort-controls {
             display: flex;
@@ -164,7 +124,7 @@
             margin-top: 5px;
             font-size: 16px;
         }
-
+/* 
         .price-input {
             width: 100%;
             display: flex;
@@ -176,7 +136,7 @@
             width: 100%;
             height: 45px;
             align-items: center;
-        }
+        } */
 
         .field input {
             width: 100%;
@@ -295,3 +255,38 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             /* optional */
         }
+        .product-card {
+    height: 100%; /* ensure all cards stretch equally */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 7px;
+    line-height: 20px; /* height of one line */
+    display: -webkit-box; /* for WebKit multiline ellipsis */
+    -webkit-line-clamp: 1; /* limit to 1 line */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* Fallback for non-WebKit browsers */
+    white-space: nowrap; /* prevents text wrapping to new line */
+    word-break: break-word; /* breaks long words if needed */
+
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+.price {
+    text-align: left;
+    color: #999;
+    font-size: 1.2rem;
+    font-style: oblique;
+    font-family: "Franklin Gothic Medium";
+}
+.best-price {
+    font-size: 1.5rem;
+    color: #e74c3c;
+    font-weight: bold;
+}

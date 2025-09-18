@@ -15,16 +15,16 @@
 {% endblock %}
 
 {% block content %}
-    <section class="container-fluid px-3 ">
-        <div class="slider-wrapper position-relative mt-5 py-2">
+    <section class="container-fluid  ">
+        <div class="slider-wrapper position-relative  py-2">
             <div class="slider shadow-sm rounded">
                 <a href="{% url 'store:fruits' %}">
                     <img id="slider-1" src="{% static 'images/fruts.jpg' %}" alt="Fruit">
                 </a>
-                <a href="">
+                <a href="{% url 'store:veg' %}">
                     <img id="slider-2" src="{% static 'images/veg_banner.jpg' %}" alt="Image 2">
                 </a>
-                <a href="">
+                <a href="{% url 'store:veg' %}">
                     <img id="slider-3" src="{% static 'images/veg_banner1.jpg' %}" alt="Image 3">
                 </a>
             </div>
@@ -37,8 +37,6 @@
             </div>
         </div>
     </section>
-
-
   <!-- Featured Products -->
     <section class=" py-2">
         <div class="container rounded" style="max-width: 1500px;"> <!-- smaller container -->
@@ -298,7 +296,7 @@
             </div>
     </section> <a href="{% url 'store:flash_products' %}">
         <section class="container-fluid px-3 ">
-            <div class="slider-wrapper position-relative mt-4 mb-4 py-2">
+            <div class="slider-wrapper position-relative  mb-4 py-2">
                 <div class="slider shadow-sm rounded">
                     <img id="slider-1" src="{% static 'images/flash_sale.jpg' %}" alt="Product Image">
                 </div>
@@ -380,9 +378,9 @@
             </div>
         </div>
     </section>
-    </section> <a href="">
+    </section> <a href="{% url 'store:fruits' %}">
         <section class="container-fluid px-3 ">
-            <div class="slider-wrapper position-relative mt-4 mb-4 py-2">
+            <div class="slider-wrapper position-relative mb-4 py-2">
                 <div class="slider shadow-sm rounded">
                     <img id="slider-1" src="{% static 'images/fruts.jpg' %}" alt="Product Image">
                 </div>

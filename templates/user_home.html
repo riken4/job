@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cat.veg - Miteri Mart{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="{% static 'css/user_home.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+ <div class="container-fluid">
+    <div class="row">
+      
+      <!-- Sidebar -->
+      <div class="col-md-3 col-lg-2 dashboard-menu">
+        <div class="list-group">
+          <a href="" class="list-group-item list-group-item-action active">
+            <i class="fa fa-chart-line"></i> Dashboard
+          </a>
+          <a href="" class="list-group-item list-group-item-action">
+            <i class="fa fa-bag-shopping"></i> Order
+          </a>
+          <a href="" class="list-group-item list-group-item-action">
+            <i class="fa fa-heart"></i> Wishlist
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-coins"></i> Loyalty Points
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-location-dot"></i> My Address
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-user"></i> Account Details
+          </a>
+          <a href="#" class="list-group-item list-group-item-action">
+            <i class="fa fa-right-from-bracket"></i> Log Out
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-9 col-lg-10 dashboard-content">
+        <h2>Hello, Riken!</h2>
+        <p class="text-muted">
+          From your account dashboard you can view your recent orders, 
+          manage your shipping and billing addresses, 
+          and edit your password and account details.
+        </p>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/veg.js' %}"></script>
+{% endblock %}
