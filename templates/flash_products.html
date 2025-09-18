@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}cat.veg - Miteri Mart{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="{% static 'css/flash_products.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+ 
+  <!-- Flash Sale Products -->
+    <section class="py-2">
+        <div class="container rounded" style="max-width: 1500px;">
+
+            <div class="container-fluid px-2">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="mb-0">Flash Sale Products</h2>
+                    <a href="{% url 'store:products' %}" class="btn btn-outline-primary btn-sm">View All Products</a>
+                </div>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
+
+                    <!-- Product 1 -->
+                    <div class="col mb-4 product-item" data-categories="rice-flours" data-subcategories="basmati"
+                        data-tags="nepal-products" data-brand="india-gate" data-name="basmati rice">
+                        <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/apple.jpg' %}" class="img-fluid mb-2" alt="Apple"
+                                            style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-20%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Fresh Red Apple</h6>
+                                    <p class="stock-status out-of-stock"><i class="fas fa-times-circle"></i> Out of stock</p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs. 250</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 200</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="col mb-4 product-item" data-categories="rice-flours" data-subcategories="basmati"
+                        data-tags="nepal-products" data-brand="india-gate" data-name="basmati rice">
+                        <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/basmati_rice.jpg' %}" class="img-fluid mb-2" alt="Basmati Rice"
+                                            style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-15%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Premium Basmati Rice</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-times-circle"></i> In stock</p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs. 850</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 720</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Repeat similar for other products -->
+                    
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <button id="show-more-btn" class="btn-show-more">Show More</button>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/flash_products.js' %}"></script>
+{% endblock %}

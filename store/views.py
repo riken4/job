@@ -5,31 +5,22 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    context = {
-        'featured_products': [],
-        'categories': [],
-        'cart': [],
-        'search_query': '',
-    }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html') 
+
+def fruits(request):
+    # render the fruits page template
+    return render(request, 'fruits.html')
+
+def products(request):
+    return render(request, 'products.html')
 
 
-def product_list(request):
-    return HttpResponse('Product list placeholder')
+def product_detail(request):
+    return render(request, 'product_detail.html')
 
+def veg(request):
+    return render(request, 'veg.html')
 
-def about(request):
-    return HttpResponse('About page placeholder')
-
-
-def contact(request):
-    return HttpResponse('Contact page placeholder')
-
-
-def cart_detail(request):
-    return HttpResponse('Cart detail placeholder')
-
-
-def register(request):
-    return HttpResponse('Register page placeholder')
+def flash_products(request):
+    return render(request, 'flash_products.html')
 

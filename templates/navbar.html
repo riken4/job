@@ -1,0 +1,95 @@
+{% load static %}
+
+
+<!-- Bootstrap CSS (only once) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <title>Navigation Bar</title>
+
+  <nav class="navbar">
+    <!-- Logo -->
+ <a class="logo" href="{% url 'store:home' %}">Miteri Mart</a>
+
+    <!-- Delivery Location -->
+    <div class="location">
+      <i class="bi bi-geo-alt"></i>
+      <div class="location-text">
+        <span class="location-label">Deliver to</span>
+        <span class="location-value">Kathmandu</span>
+      </div>
+    </div>
+
+    <!-- Categories Dropdown -->
+<div class="dropdown">
+  <button class="dropdown btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+    Categories
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'store:fruits' %}">Fruits</a></li>
+    <li><a class="dropdown-item" href="{% url 'store:veg' %}">Vegetables</a></li>
+    <li><a class="dropdown-item" href="#">Books</a></li>
+    <li><a class="dropdown-item" href="#">Clothing</a></li>
+  </ul>
+</div>
+
+
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search products...">
+      <button class="search-button">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+
+    <!-- Language Selector -->
+   <div class="language-selector dropdown">
+        <button class="language-selector btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="flag-icon flag-icon-us me-2"></span>
+            <span id="selectedLanguage">English</span>
+        </button>
+        <ul class="dropdown-menu language-dropdown-menu">
+            <li>
+                <a class="dropdown-item language-dropdown-item" href="#" data-value="english" data-flag="us">
+                    <span class="flag-icon flag-icon-us"></span>
+                    English
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item language-dropdown-item" href="#" data-value="nepali" data-flag="np">
+                    <span class="flag-icon flag-icon-np"></span>
+                    Nepali
+                </a>
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <!-- Account & Lists -->
+    <a href="#" class="nav-item">
+      <span class="nav-item-top">Hello, Riken</span>
+      <span class="nav-item-bottom">Account & Lists</span>
+    </a>
+
+    <!-- Returns & Orders -->
+    <a href="" class="nav-item">
+      <span class="nav-item-top">Returns</span>
+      <span class="nav-item-bottom">& Orders</span>
+    </a>
+
+    <!-- Cart -->
+    <a href="" class="cart">
+      <div class="cart-count">0</div>
+      <i class="bi bi-cart"></i>
+      <span class="cart-text">Cart</span>
+    </a>
+  </nav>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/navbar.js' %}"></script>

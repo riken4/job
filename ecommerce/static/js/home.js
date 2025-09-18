@@ -44,3 +44,48 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rightArrow) rightArrow.addEventListener('click', () => scrollBySlide(1));
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.querySelector(".slider");
+    const slides = slider.querySelectorAll("img");
+    const prevBtn = document.querySelector(".slider-arrow-left");
+    const nextBtn = document.querySelector(".slider-arrow-right");
+    const navDots = document.querySelectorAll(".slider-nav a");
+
+    let currentIndex = 0;
+
+    const updateSlider = () => {
+        slider.scrollTo({
+            left: slides[currentIndex].offsetLeft,
+            behavior: "smooth"
+        });
+
+        navDots.forEach((dot, idx) => {
+            dot.style.opacity = idx === currentIndex ? "1" : "0.5";
+        });
+    };
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+        updateSlider();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+        updateSlider();
+    });
+
+    // Optional: click on nav dots
+    navDots.forEach((dot, idx) => {
+        dot.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentIndex = idx;
+            updateSlider();
+        });
+    });
+
+    // Optional: auto-slide every 5 seconds
+    setInterval(() => {
+        currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+        updateSlider();
+    }, 3000);
+});

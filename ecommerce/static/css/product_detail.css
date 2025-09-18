@@ -1,0 +1,175 @@
+  body{
+             padding-top: 80px;
+        }
+        .body-bg{
+    background:#F1F0E4;
+}
+ .container {
+    background-color:#f8f9fa;
+    padding: 2rem;
+}
+  /* Main product image */
+        .product-image-main {
+            width: 450px;       /* smaller main image */
+            max-height: 450px;
+            object-fit: contain;
+        }
+        /* Container for zoom */
+.position-relative-main {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}  body{
+             padding-top: 80px;
+        }
+  /* Main product image */
+        .product-image-main {
+            width: 450px;       /* smaller main image */
+            max-height: 450px;
+            object-fit: contain;
+        }
+        /* Container for zoom */
+.position-relative-main {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+/* Image style */
+.zoom-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+        /* Thumbnails */
+        .product-image-thumb {
+            width: 60px;   
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            object-fit: cover;
+        }
+
+        .product-image-thumb.selected {
+            border-color: #dc3545;
+        }
+         /* rating */
+/* From Uiverse.io by andrew-demchenk0 */ 
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+
+ */
+
+/* Image style */
+.zoom-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+        /* Thumbnails */
+        .product-image-thumb {
+            width: 60px;   
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            object-fit: cover;
+        }
+
+        .product-image-thumb.selected {
+            border-color: #dc3545;
+        }
+         /* rating */
+/* From Uiverse.io by andrew-demchenk0 */ 
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+
+.rating:not(:checked) > label:before {
+  content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
+
+ */
+      .product-card {
+    height: 100%; /* ensure all cards stretch equally */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 20px;
+    line-height: 20px;          /* height of one line */
+    display: -webkit-box;        /* for WebKit multiline ellipsis */
+    -webkit-line-clamp: 1;       /* limit to 1 line */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* Fallback for non-WebKit browsers */
+    white-space: nowrap;         /* prevents text wrapping to new line */
+    word-break: break-word;      /* breaks long words if needed */
+
+    margin: 0 0 4px 0;
+    padding: 0;
+}

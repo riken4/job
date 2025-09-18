@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Miteri Mart{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="{% static 'css/products.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="filter-sidebar">
+
+
+                <!-- Category Filter -->
+                <div class="filter-section">
+                    <h6><i class="fas fa-layer-group"></i> Category</h6>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-groceries" data-filter="category" data-value="groceries">
+                        <label for="cat-groceries">Groceries <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-electronics" data-filter="category" data-value="electronics">
+                        <label for="cat-electronics">Electronics <span class="filter-count">(0)</span></label>
+                    </div>
+
+                </div>
+
+                <!-- Subcategory Filter -->
+                <div class="filter-section">
+                    <h6><i class="fas fa-tags"></i> Subcategory</h6>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sub-fruits" data-filter="subcategory" data-value="fruits">
+                        <label for="sub-fruits">Fruits <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sub-vegetables" data-filter="subcategory" data-value="vegetables">
+                        <label for="sub-vegetables">Vegetables <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sub-dairy" data-filter="subcategory" data-value="dairy">
+                        <label for="sub-dairy">Dairy <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sub-snacks" data-filter="subcategory" data-value="snacks">
+                        <label for="snacks">Snacks <span class="filter-count">(0)</span></label>
+                    </div>
+                </div>
+
+                <!-- Tag Filter -->
+                <div class="filter-section">
+                    <h6><i class="fas fa-bookmark"></i> Tags</h6>
+                    <div class="filter-option">
+                        <input type="checkbox" id="tag-new" data-filter="tag" data-value="new-arrivals">
+                        <label for="tag-new">New Arrivals <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="tag-bestseller" data-filter="tag" data-value="bestseller">
+                        <label for="tag-bestseller">Bestseller <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="tag-organic" data-filter="tag" data-value="organic">
+                        <label for="tag-organic">Organic <span class="filter-count">(0)</span></label>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="filter-section">
+                    <h6><i class="fas fa-certificate"></i> Brand</h6>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-fortune" data-filter="brand" data-value="fortune">
+                        <label for="brand-fortune">Fortune <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-samsung" data-filter="brand" data-value="samsung">
+                        <label for="brand-samsung">Samsung <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-local" data-filter="brand" data-value="local">
+                        <label for="brand-local">Local <span class="filter-count">(0)</span></label>
+                    </div>
+                </div>
+            </div>
+            <button class="clear-filters" onclick="clearAllFilters()">
+                <i class="fas fa-times-circle"></i> Clear All Filters
+            </button>
+        </div>
+
+        <!-- Product Content -->
+        <div class="col-md-9">
+            <div class="container rounded">
+                <div>
+                    <h2>Product Catalog</h2>
+                    <div class="alert alert-info">
+                        <strong>Filter Status:</strong> <span id="filter-status">No filters applied</span>
+                    </div>
+                </div>
+
+                <!-- No Products Message -->
+                <div id="no-products-message" class="no-products-message">
+                    <i class="fas fa-search fa-3x mb-3"></i>
+                    <h4>No products found</h4>
+                    <p>Try adjusting your filters or search terms to see more products.</p>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="product-grid" class="row g-3">
+                    <!-- Product 1 - Apple (Fruits) -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
+                        data-subcategory="fruits" data-tag="organic" data-brand="local" data-name="apple">
+                        <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                               <div class="card-body d-flex flex-column">
+    <div class="text-center position-relative mb-2">
+        <img src="{% static 'images/apple.jpg' %}" 
+             class="img-fluid" alt="Apple" 
+             style="max-height:160px; object-fit:contain;">
+        <div class="discount-badge position-absolute top-0 start-0 m-2 bg-danger text-white px-2 py-1 rounded">-20%</div>
+    </div>
+
+    <h6 class="product-name text-start text-truncate" style="font-size: 0.95rem;" title="Fresh Red Apple from Mustang">
+        Fresh Red Apple from Mustang
+    </h6>
+
+    <p class="stock-status mb-1 small">
+        <i class="fas fa-times-circle"></i> Out of stock
+    </p>
+
+    <div class="price d-flex flex-wrap align-items-center mb-2">
+        <span class="old-price text-muted text-decoration-line-through me-2" style="font-size:0.85rem;">Rs. 250</span>
+        <span class="best-price fw-bold text-danger" style="font-size:0.95rem;">Rs. 200</span>
+    </div>
+
+    <button type="button" class="btn btn-sm btn-success mt-auto w-100 py-1">🛒 Buy Now</button>
+</div>
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 2 - Basmati Rice -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
+                        data-subcategory="dairy" data-tag="organic" data-brand="local" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/basmati_rice.jpg' %}" class="img-fluid mb-2"
+                                            alt="basmati rice" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-15%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Premium Basmati Rice</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            850</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 720</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 3 - Cooking Oil -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
+                        data-subcategory="" data-tag="" data-brand="local" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/Sunflower_oil.jpg' %}" class="img-fluid mb-2"
+                                            alt="sunflower oil" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-25%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Fortune Sunflower Oil</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            320</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 240</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 4 - Spices -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
+                        data-subcategory="" data-tag="organic" data-brand="local" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/garam_masala.jpg' %}" class="img-fluid mb-2"
+                                            alt="Garam Masala" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-10%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Curry Master Garam Masala</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            150</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 135</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 5 - Lentils -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-categories="groceries"
+                        data-tags="dairy" data-brand="" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/musuri_dal.jpg' %}" class="img-fluid mb-2"
+                                            alt="Masoor Dal" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-12%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Amrit Masoor Dal</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            180</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 158</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 6 - Snacks -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-categories=""
+                        data-tags="snacks" data-brand="" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/Haldiram.jpg' %}" class="img-fluid mb-2"
+                                            alt="Haldiram's Mixture" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-18%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Haldiram's Mixture</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            120</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 98</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 7 - Regular Rice -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
+                        data-subcategory="dairy" data-tag="organic" data-brand="local" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/white_rice.jpg' %}" class="img-fluid mb-2"
+                                            alt="White Rice" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-8%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Akshar White Rice</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            680</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 625</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 8 - Refrigerator -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="electronics"
+                        data-subcategory="" data-tag="" data-brand="samsung" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/Mini_Refrigerator.jpg' %}" class="img-fluid mb-2"
+                                            alt="Mini Refrigerator" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-30%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">Samsung Mini Refrigerator</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            25,000</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 17,500</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Product 9 - Noodles -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category=""
+                        data-subcategory="snacks" data-tag="" data-brand="" data-name="">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/2pm.jpg' %}" class="img-fluid mb-2"
+                                            alt="2pm noodles" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-5%</div>
+                                    </div>
+                                    <h6 class="product-name py-2 text-start">2pm Instant Noodles</h6>
+                                    <p class="stock-status in-stock mt-1"><i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price text-start">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            40</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 38</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/products.js' %}"></script>
+{% endblock %}
