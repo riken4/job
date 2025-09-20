@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.category-container');
   const slider = document.querySelector('.slider');
   const sliderWrapper = document.querySelector('.slider-wrapper');
@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    if (sliderWrapper) sliderWrapper.addEventListener('wheel', wheelToHorizontal, { passive: false });
-    slider.addEventListener('wheel', wheelToHorizontal, { passive: false });
 
     const slideWidth = () => slider.clientWidth;
     const scrollBySlide = (direction) => slider.scrollBy({ left: direction * slideWidth(), behavior: 'smooth' });

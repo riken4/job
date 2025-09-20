@@ -1,95 +1,455 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon-style Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
+    <style>
+        /* CSS is in a single block for clarity as per the prompt */
+        :root {
+            --primary-bg-color: #131921;
+            --secondary-bg-color: #232f3e;
+            --search-bar-color: #febd69;
+            --text-color: #ffffff;
+            --link-hover-color: #ff9900;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+      
+        
+        /* Header and Navbar general styles */
+        .amazon-header {
+            background-color: var(--primary-bg-color);
+            color: var(--text-color);
+           
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .amazon-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Links and Items */
+        .amazon-navbar a,
+        .amazon-navbar button,
+        .amazon-navbar .dropdown-toggle {
+            color: var(--text-color);
+            text-decoration: none;
+            background-color: transparent;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: all 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+        
+        .amazon-navbar  a:hover,
+        .amazon-navbar button:hover,
+        .amazon-navbar .dropdown-toggle:hover {
+            color: orange;
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Logo */
+        .nav-logo img {
+          width:120px; 
+          height:50px;
+        }
+        
+        /* Location */
+        .nav-location {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .nav-location .bi-geo-alt-fill {
+            font-size: 20px;
+        }
+        
+        .nav-location-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        
+        .nav-location-text .nav-value {
+            font-weight: bold;
+        }
+        
+        /* Search Bar */
+        .nav-search {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .nav-search-dropdown select {
+            background-color: #040303;
+            border: none;
+            padding: 8px 10px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            cursor: pointer;
+            border-right: 1px solid #ccc;
+            font-size: 12px;
+        }
+        
+        .nav-search-input {
+            flex-grow: 1;
+            border: none;
+            padding: 8px 10px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .nav-search-button {
+            background-color: #030101;
+            padding: 8px 15px;
+            border-radius: 0 5px 5px 0;
+            color: #000;
+            font-size: 18px;
+        }
+        
+        .nav-search-button:hover {
+            background-color: #000000;
+        }
+        
+        /* Right side navigation items */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .nav-item .nav-item-label {
+            font-size: 12px;
+        }
+        
+        .nav-item .nav-item-value {
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .nav-cart {
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            padding: 5px 10px;
+        }
+        
+        .nav-cart .bi-cart {
+            font-size: 28px;
+        }
+        
+        .nav-cart .nav-cart-count {
+            position: absolute;
+            top: 5px;
+            left: 20px;
+            background-color: var(--link-hover-color);
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-cart-label {
+            margin-left: 5px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        
+        /* Language Dropdown */
+        .language-dropdown .dropdown-item,
+        .language-dropdown button {
+            color: #131921;
+        }
 
+        .language-dropdown .dropdown-item:hover {
+            background-color: #333;
+              --text-color: #e9e9e9; 
+        }
 
-<!-- Bootstrap CSS (only once) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        /* Dropdown menus */
+        .dropdown-menu {
+            background-color: #131921 !important;
+             color: var(--text-color) ;
+            border: 1px solid var(--secondary-bg-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        .dropdown-menu .dropdown-item {
+            color: var(--text-color);
+            
+            background-color: #131921;
+            border: none;
+            padding: 8px 16px;
+        }
 
-<!-- CSS -->
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-  <title>Navigation Bar</title>
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #232f3e;
+             
+        }
+        
+        .flag-icon {
+            height: 15px;
+            margin-right: 5px;
+        }
+        
+        /* Hamburger menu for small screens */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+        
+        /* --- Responsive Layout --- */
+        
+        /* Tablet & Smaller Laptops (up to 1024px) */
+        @media (max-width: 1024px) {
+            .nav-search {
+                flex-grow: 0;
+                width: 400px;
+            }
+            
+            .nav-item .nav-item-value {
+                font-size: 12px;
+            }
+        }
+        
+/* Tablets (up to 768px) */
+@media (max-width: 768px) {
+    .amazon-navbar {
+        display: grid;
+        grid-template-areas:
+            "logo menu cart"
+            "search search search";
+        grid-template-columns: 1fr auto auto; /* Adjusted columns for logo, menu, and cart */
+        gap: 10px;
+        align-items: center;
+    }
 
-  <nav class="navbar">
-    <!-- Logo -->
- <a class="logo" href="{% url 'store:home' %}">Miteri Mart</a>
+    .nav-logo { grid-area: logo; }
+    .nav-search { grid-area: search; width: 100%; }
+    .nav-cart { grid-area: cart; display: flex;}
+    .menu-toggle { 
+        grid-area: menu; 
+        display: block; 
+        font-size: 40px; /* Makes the menu button icon bigger */
+    }
+    
+    .nav-right {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--secondary-bg-color);
+        padding: 10px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 999;
+    }
+    
+    .nav-right.active {
+        display: flex;
+    }
+    
+    .nav-search-dropdown {
+        display: none;
+    }
 
-    <!-- Delivery Location -->
-    <div class="location">
-      <i class="bi bi-geo-alt"></i>
-      <div class="location-text">
-        <span class="location-label">Deliver to</span>
-        <span class="location-value">Kathmandu</span>
-      </div>
-    </div>
+    .nav-right .nav-item,
+    .nav-right .dropdown {
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        border: none;
+    }
+    
+    .nav-right .nav-item:hover,
+    .nav-right .dropdown:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: none;
+    }
 
-    <!-- Categories Dropdown -->
-<div class="dropdown">
-  <button class="dropdown btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-    Categories
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="{% url 'store:fruits' %}">Fruits</a></li>
-    <li><a class="dropdown-item" href="{% url 'store:veg' %}">Vegetables</a></li>
-    <li><a class="dropdown-item" href="#">Books</a></li>
-    <li><a class="dropdown-item" href="#">Clothing</a></li>
-  </ul>
-</div>
-
-
-
-    <!-- Search Bar -->
-    <div class="search-container">
-      <input type="text" class="search-input" placeholder="Search products...">
-      <button class="search-button">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-
-    <!-- Language Selector -->
-   <div class="language-selector dropdown">
-        <button class="language-selector btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="flag-icon flag-icon-us me-2"></span>
-            <span id="selectedLanguage">English</span>
-        </button>
-        <ul class="dropdown-menu language-dropdown-menu">
-            <li>
-                <a class="dropdown-item language-dropdown-item" href="#" data-value="english" data-flag="us">
-                    <span class="flag-icon flag-icon-us"></span>
-                    English
+    .dropdown-menu {
+        position: static;
+        background-color: #131921;
+        backdrop-filter: none;
+        box-shadow: none;
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="amazon-header">
+        <nav class="amazon-navbar">
+            <div class="nav-left">
+                <a href="{% url 'store:home' %}" class="nav-logo ">
+                    <img src="{% static 'images/miteri_mart.png' %}" alt="">
                 </a>
-            </li>
-            <li>
-                <a class="dropdown-item language-dropdown-item" href="#" data-value="nepali" data-flag="np">
-                    <span class="flag-icon flag-icon-np"></span>
-                    Nepali
+                <a href="#" class="nav-location">
+                    <i class="bi bi-geo-alt-fill pb-1"></i>
+                    <div class="nav-location-text">
+                        <span class="nav-label">Deliver to</span>
+                        <span class="nav-value">Nepal</span>
+                    </div>
                 </a>
-            </li>
-        </ul>
-    </div>
-    </div>
+            </div>
 
-    <!-- Account & Lists -->
-    <a href="#" class="nav-item">
-      <span class="nav-item-top">Hello, Riken</span>
-      <span class="nav-item-bottom">Account & Lists</span>
-    </a>
+            <div class="nav-search">
+        
+                <input type="text" class="nav-search-input" placeholder="Search Miteri Mart">
+                <button class="nav-search-button">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
 
-    <!-- Returns & Orders -->
-    <a href="" class="nav-item">
-      <span class="nav-item-top">Returns</span>
-      <span class="nav-item-bottom">& Orders</span>
-    </a>
+            <div class="nav-right">
+                <div class="dropdown language-dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="fi fi-us me-2"></span> EN
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <span class="fi fi-us me-2"></span> English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <span class="fi fi-np me-2"></span> Nepali
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-    <!-- Cart -->
-    <a href="" class="cart">
-      <div class="cart-count">0</div>
-      <i class="bi bi-cart"></i>
-      <span class="cart-text">Cart</span>
-    </a>
-  </nav>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{% static 'js/navbar.js' %}"></script>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle font-weight-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'store:fruits' %}">Fruits</a></li>
+                        <li><a class="dropdown-item" href="{% url 'store:veg' %}">Vegetables</a></li>
+                        <li><a class="dropdown-item" href="/books">Books</a></li>
+                        <li><a class="dropdown-item" href="/clothing">Clothing</a></li>
+                    </ul>
+                </div>
+                
+                <a href="{% url 'store:user_home' %}" class="nav-item ">
+                    <span class="nav-item-label">Hello, Riken</span>
+                    <span class="nav-item-value">Account & Lists</span>
+                </a>
+                
+                <a href="#" class="nav-item">
+                    <span class="nav-item-label">Returns</span>
+                    <span class="nav-item-value">& Orders</span>
+                </a>
+            </div>
+            
+            <a href="#" class="nav-cart">
+                <span class="nav-cart-count">0</span>
+                <i class="bi bi-cart"></i>
+                <span class="nav-cart-label">Cart</span>
+            </a>
+            
+            <button class="menu-toggle">
+                <i class="bi bi-list w-50 h-50"></i>
+            </button>
+        </nav>
+    </header>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navRight = document.querySelector('.nav-right');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+            // Hamburger menu toggle logic
+            if (menuToggle && navRight) {
+                menuToggle.addEventListener('click', () => {
+                    navRight.classList.toggle('active');
+                    // Close all dropdowns when the main menu is toggled
+                    dropdownToggles.forEach(toggle => {
+                        toggle.classList.remove('active');
+                        toggle.nextElementSibling.classList.remove('show');
+                    });
+                });
+            }
+        
+            // Generic dropdown logic for all dropdowns
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const menu = toggle.nextElementSibling;
+                    const isShowing = menu.classList.contains('show');
+        
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
+                        if (openMenu !== menu) {
+                            openMenu.classList.remove('show');
+                            openMenu.previousElementSibling.classList.remove('active');
+                        }
+                    });
+        
+                    // Toggle the clicked dropdown
+                    menu.classList.toggle('show', !isShowing);
+                    toggle.classList.toggle('active', !isShowing);
+                });
+            });
+        
+            // Global click listener to close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                dropdownToggles.forEach(toggle => {
+                    const menu = toggle.nextElementSibling;
+                    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+                        menu.classList.remove('show');
+                        toggle.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

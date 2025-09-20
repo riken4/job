@@ -29,3 +29,19 @@ def cart(request):
 
 def user_home(request):
     return render(request, 'user_home.html')
+
+def user_address(request):
+    return render(request, 'user_address.html')
+
+def user_order(request):
+    return render(request, 'user_order.html')
+
+def user_dashboard(request):
+    return render(request, 'user_dashboard.html')
+
+def user_detail(request):
+    return render(request, 'user_detail.html')
+
+def user_registration(request):
+    return render(request, 'user_registration.html')
+

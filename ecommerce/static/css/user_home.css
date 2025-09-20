@@ -1,6 +1,6 @@
     body {
-      background-color: #f8f9fa;
-          padding-top: 80px;
+      background-color: #ffffff;
+         
     }
     .dashboard-menu {
       min-height: 100vh;
@@ -17,11 +17,11 @@
       align-items: center;
       gap: 10px;
     }
-    .dashboard-menu .active {
+    /* .dashboard-menu .active {
       background-color: #7b5a29 !important;
       border-color: #7b5a29 !important;
       color: #fff !important;
-    }
+    } */
     .dashboard-content {
       padding: 30px;
     }

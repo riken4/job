@@ -23,6 +23,8 @@
     }
     .dashboard-content {
       padding: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
     .dashboard-content h2 {
       font-weight: bold;

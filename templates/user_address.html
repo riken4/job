@@ -6,7 +6,7 @@
 {% block extra_css %}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<link href="{% static 'css/veg.css' %}" rel="stylesheet">
+<link href="{% static 'css/user_address.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -16,22 +16,22 @@
       <!-- Sidebar -->
       <div class="col-md-3 col-lg-2 dashboard-menu">
         <div class="list-group">
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_home') ? 'active' : '' }}">
+          <a href="{% url 'store:user_home' %}" class="list-group-item list-group-item-action ">
             <i class="fa fa-chart-line"></i> Dashboard
           </a>
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_order') ? 'active' : '' }}">
+          <a href="{% url 'store:user_order' %}" class="list-group-item list-group-item-action ">
             <i class="fa fa-bag-shopping"></i> Order
           </a>
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_wishlist') ? 'active' : '' }}">
+          <a href="" class="list-group-item list-group-item-action ">
             <i class="fa fa-heart"></i> Wishlist
           </a>
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_loyalty') ? 'active' : '' }}">
+          <a href="" class="list-group-item list-group-item-action ">
             <i class="fa fa-coins"></i> Loyalty Points
           </a>
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_address') ? 'active' : '' }}">
+          <a href="{% url 'store:user_address' %}" class="list-group-item list-group-item-action active">
             <i class="fa fa-location-dot"></i> My Address
           </a>
-          <a href="" class="list-group-item list-group-item-action {{ request()->routeIs('user_account') ? 'active' : '' }}">
+          <a href="{% url 'store:user_detail' %}" class="list-group-item list-group-item-action ">
             <i class="fa fa-user"></i> Account Details
           </a>
           <a href="" class="list-group-item list-group-item-action">
@@ -48,10 +48,10 @@
           <div class="col-md-6">
             <div class="address-box">
               <h5>Billing Address</h5>
-              <p>{{ $billing->city ?? 'Kathmandu' }}<br>
-                 {{ $billing->street ?? '2' }}<br>
-                 {{ $billing->country ?? 'Nepal' }}<br>
-                 {{ $billing->zipcode ?? '44000' }}
+              <p>Kathmandu<br>
+                2<br>
+                 Nepal<br>
+                 44000
               </p>
               <a href="">Edit</a>
             </div>
@@ -61,10 +61,8 @@
           <div class="col-md-6">
             <div class="address-box">
               <h5>Shipping Address</h5>
-              <p>{{ $shipping->city ?? 'N/A' }}<br>
-                 {{ $shipping->street ?? 'N/A' }}<br>
-                 {{ $shipping->country ?? 'N/A' }}<br>
-                 {{ $shipping->zipcode ?? 'N/A' }}
+              <p>
+
               </p>
               <a href="">Edit</a>
             </div>
