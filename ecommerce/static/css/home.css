@@ -1,10 +1,17 @@
-.body-bg {
-  background-color: #f1f0e4;
-}
+
 /* Slider Container */
 .container {
   background-color: #f8f9fa;
   padding: 2rem;
+   max-width: 900px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+    gap: 30px;
+    padding: 2rem;
+  animation: fadeIn 0.3s ease-in;
 }
 
 .slider-wrapper {
@@ -253,8 +260,7 @@ body {
   text-align: center;
   margin-top: 1px;
   margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+
 }
 /* Optional: hide default scrollbar */
 .category-container {
@@ -434,4 +440,33 @@ body {
 
 .footer {
   background-color: #3e3f29;
+}
+
+@media (min-width: 992px) {
+    .col-lg-2-4 {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+.like-btn {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  background: rgba(255,255,255,0.9);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  z-index: 10; /* Ensures it's above other elements */
+}
+.like-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,1) !important;
+    
+}
+
+.like-btn.liked i {
+    color: #e91e63 !important;
 }

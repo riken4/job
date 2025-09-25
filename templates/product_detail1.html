@@ -8,15 +8,17 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="{% static 'css/product_detail.css' %}" rel="stylesheet">
 <style>
-  .body-bg {
-    background-color: #f1f0e4;
-  }
-
-  /* Slider Container */
-  .container {
-    background-color: #f8f9fa;
+  
+    .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+    gap: 30px;
     padding: 2rem;
-    border-radius: 5px;
+    animation: fadeIn 0.3s ease-in;
   }
 
   /* Main product image */
@@ -25,7 +27,7 @@
     /* smaller main image */
     max-height: 450px;
     object-fit: contain;
-    
+
   }
 
   /* Container for zoom */
@@ -33,14 +35,14 @@
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
-    width:100%; 
-    max-width:400px; 
-    overflow:hidden; 
-    margin:auto;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    margin: auto;
     margin-bottom: 10px;
-        border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
-  
+
   }
 
   /* Main product image */
@@ -49,7 +51,7 @@
     /* smaller main image */
     max-height: 450px;
     object-fit: contain;
-    
+
   }
 
 
@@ -117,10 +119,13 @@
     border: 2px solid rgb(194, 194, 194);
     border-radius: 5px;
     object-fit: cover;
+    max-width: 100%;
+    height: auto;
   }
 
   .product-image-thumb.selected {
     border-color: #dc3545;
+    border: 2px solid #dc3545;
   }
 
   /* rating */
@@ -349,15 +354,7 @@
   }
 
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: #f8f9fa;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 5px;
-    gap: 30px;
-  }
+
 
   .tab-container {
     display: flex;
@@ -440,7 +437,7 @@
 
   .product-details p {
     margin-bottom: 15px;
-        padding: 8px 0;
+    padding: 8px 0;
   }
 
   .features-list {
@@ -640,6 +637,8 @@
       gap: 8px;
     }
   }
+
+  /* Custom styles for the product options */
 </style>
 {% endblock %}
 {% block content %}
@@ -649,21 +648,22 @@
     <div class="col-md-6">
       <!-- Main Image -->
       <div class="position-relative-main">
-        <img id="mainImage" src="{% static 'images/apple.jpg' %}" class="product-image-main mb-3" alt="Main Product"
+        <img id="mainImage" src="{% static 'images/t-shirt1.jpg' %}" class="product-image-main mb-3" alt="Main Product"
           style="width:100%; height:auto; display:block;">
       </div>
 
       <!-- Thumbnails -->
       <div class="d-flex gap-2">
-        <img src="{% static 'images/apple.jpg' %}" class="product-image-thumb selected" alt="Thumb1">
-        <img src="{% static 'images/cherry.jpg' %}" class="product-image-thumb" alt="Thumb2">
-        <img src="{% static 'images/apple.jpg' %}" class="product-image-thumb" alt="Thumb3">
+        <img src="{% static 'images/t-shirt1.jpg' %}" class="product-image-thumb" alt="Thumb2">
+        <img src="{% static 'images/t-shirt2.jpg' %}" class="product-image-thumb selected" alt="Thumb1">
+        <img src="{% static 'images/t-shirt3.jpg' %}" class="product-image-thumb selected" alt="Thumb1">
+        <img src="{% static 'images/t-shirts.jpg' %}" class="product-image-thumb" alt="Thumb3">
       </div>
     </div>
 
     <!-- Right: Product Info -->
     <div class="col-md-6">
-      <h3>Apple</h3>
+      <h3>T-shirt</h3>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
         industry's standard dummy text ever since the 1500s...</p>
 
@@ -674,9 +674,38 @@
       </ul>
 
       <div class="price mb-3">
-        <span class=" text-muted text-decoration-line-through me-2">Rs 250</span>
-        <span class="best-price text-danger fs-4">Rs 200</span>
+        <span class=" text-muted text-decoration-line-through me-2">Rs 1500</span>
+        <span class="best-price text-danger fs-4">Rs 1200</span>
       </div>
+
+      <!-- select color -->
+      <div class="my-4">
+        <h5 class="mb-3">Color Family: <span id="selectedColorName">Green</span></h5>
+        <div class="row g-2">
+          <div class="col-3 col-md-2">
+            <img src="{% static 'images/t-shirt1.jpg' %}" data-src="{% static 'images/t-shirt1.jpg' %}"
+              data-color="Green" class="product-image-thumb" alt="Product Thumbnail 1">
+          </div>
+          <div class="col-3 col-md-2">
+            <img src="{% static 'images/t-shirt2.jpg' %}" data-src="{% static 'images/t-shirt2.jpg' %}"
+              data-color="Purple" class="product-image-thumb" alt="Product Thumbnail 2">
+          </div>
+          <div class="col-3 col-md-2">
+            <img src="{% static 'images/t-shirt3.jpg' %}" data-src="{% static 'images/t-shirt3.jpg' %}"
+              data-color="Black" class="product-image-thumb" alt="Product Thumbnail 3">
+          </div>
+        </div>
+      </div>
+      <!-- size -->
+      <div class="my-4">
+        <h5 class="mb-3">Size: <span id="selectedSizeName">M</span></h5>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary size-option active" data-size="M">M</button>
+          <button class="btn btn-outline-secondary size-option" data-size="L">L</button>
+          <button class="btn btn-outline-secondary size-option" data-size="XL">XL</button>
+        </div>
+      </div>
+
 
       <!-- Quantity + Buttons -->
       <div class="mb-3 d-flex align-items-center gap-2">
@@ -711,37 +740,33 @@
 
   <div id="product-description" class="tab-content active">
     <div class="product-header">
-      <h1 class="product-title">Apple</h1>
+      <h1 class="product-title">T-shirt</h1>
     </div>
     <div class="product-details">
-      <p>Our Honeycrisp Apple is famous for its amazing crunch and juicy, sweet flavor. Every bite is a perfect mix of
-        sweet honey and a little bit of tang. We hand-pick them from our orchards at just the right time so you get the
-        best and freshest apple.
-
+      <p>A stylish and comfortable unisex cotton T-shirt perfect for everyday wear. Designed with a classic fit, it offers a soft, breathable feel and pairs effortlessly with jeans, shorts, or casual outfits.
       </p>
-<hr>
+      <hr>
       <h3>Key Features</h3>
       <div class="features-list">
         <ul>
 
-          <li><strong>Super Crunchy:</strong> It's known for its incredibly crisp texture.</li>
+          <li><strong>100% Premium Cotton:</strong> Soft, lightweight, and breathable.</li>
 
-          <li><strong> Sweet:</strong> A great balance of sweetness with a hint of tartness.
+          <li><strong> Durable Stitching:</strong>Long-lasting quality with reinforced seams.
           </li>
-          <li><strong>Fresh & High-Quality:</strong> Grown and picked with care for the best taste.
-          </li>
+          <li><strong>Comfort Fit:</strong> Classic round neck and short sleeves for all-day comfort.</li>
+                    <li><strong>Versatile Style:</strong> Ideal for casual, office-casual, or weekend wear.</li>
 
         </ul>
       </div>
-<hr>
+      <hr>
       <h3>Product Specifications</h3>
-      <p><strong>Origin:</strong>Grown in Mustang, Nepal<br>
-        <strong>Best Used For:</strong>Eating fresh, baking, and cooking<br>
-        <strong>Power:</strong> 1050 Watts<br>
-        <strong>How to Store:</strong>Keep it in the fridge to stay extra crisp.<br>
-        <strong>Material:</strong> Stainless steel and BPA-free plastic
+      <p><strong>material:</strong>100% Combed Cottern<br>
+        <strong>Fit Type:</strong>Regular/ Classic Fit<br>
+        <strong>Sleeve:</strong> Short sleeve<br>
+        <strong>Care:</strong>Machine whash cold, tumble dry low<br>
       </p>
-     
+
     </div>
   </div>
 
@@ -1115,5 +1140,64 @@
       });
     });
   });
-</script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const colorOptions = document.querySelectorAll('.color-option');
+    const sizeOptions = document.querySelectorAll('.size-option');
+    const selectedColorName = document.getElementById('selectedColorName');
+    const selectedSizeName = document.getElementById('selectedSizeName');
+    const productImage = document.querySelector('.col-md-6 img');
+
+    // Handle Color Selection
+    colorOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove 'active' class from all color options
+        colorOptions.forEach(item => item.classList.remove('active'));
+
+        // Add 'active' class to the clicked option
+        option.classList.add('active');
+
+        // Update the displayed color name
+        const colorName = option.getAttribute('data-color');
+        selectedColorName.textContent = colorName;
+
+        // Update the main product image
+        const newImageSrc = option.getAttribute('data-image');
+        productImage.src = newImageSrc;
+      });
+    });
+
+    // Handle Size Selection
+    sizeOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove 'active' class from all size options
+        sizeOptions.forEach(item => item.classList.remove('active'));
+
+        // Add 'active' class to the clicked option
+        option.classList.add('active');
+
+        // Update the displayed size name
+        const sizeName = option.getAttribute('data-size');
+        selectedSizeName.textContent = sizeName;
+      });
+    });
+
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    // Correctly select all image thumbnails
+    const thumbnails = document.querySelectorAll('.product-image-thumb');
+    const selectedColorName = document.getElementById('selectedColorName');
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function () {
+        // Get the color name from the data-color attribute of the clicked image
+        const colorName = this.getAttribute('data-color');
+
+        // Update the text content of the span
+        if (selectedColorName) {
+          selectedColorName.textContent = colorName;
+        }
+      });
+    });
+  });</script>
 {% endblock %}

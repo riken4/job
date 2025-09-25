@@ -87,3 +87,69 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
     }, 3000);
 });
+function toggleLike(button) {
+    // Prevent the link from being followed
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const isLiked = button.classList.contains('liked');
+    button.classList.toggle('liked');
+    
+    // Get product details
+    const productItem = button.closest('.product-item');
+    
+    // Show feedback message
+    if (!isLiked) {
+        showWishlistMessage(`Added to Wishlist!`, 'success');
+        // Here you can add code to actually add to wishlist/database
+        // addToWishlist(productItem.getAttribute('data-name'));
+    } else {
+        showWishlistMessage(`<i class="bi bi-x-circle"></i>Removed from Wishlist!`, 'info');
+        // Here you can add code to remove from wishlist/database
+        // removeFromWishlist(productItem.getAttribute('data-name'));
+    }
+    
+    // Animation effect
+    button.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        button.style.transform = 'scale(1)';
+    }, 150);
+}
+
+function showWishlistMessage(message, type) {
+    // Create toast notification
+    const toast = document.createElement('div');
+    toast.className = `alert alert-${type} position-fixed`;
+    toast.style.cssText = `
+        top: 20px; 
+        right: 20px; 
+        z-index: 9999; 
+        min-width: 300px;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+    `;
+    toast.innerHTML = `
+        <div class="d-flex align-items-center">
+            <i class="fas fa-heart me-2"></i>
+            ${message}
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Show toast
+    setTimeout(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Hide and remove toast after 3 seconds
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}

@@ -91,7 +91,8 @@
         color: #131921;
         display: flex;
     }
-    .sub-title{
+
+    .sub-title {
         opacity: 0.6;
     }
 
@@ -117,6 +118,10 @@
         }
 
     }
+  .social {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Inherits color from the parent element */
+}  
 </style>
 
 <!-- inside <head> -->
@@ -142,9 +147,11 @@
 
                         <span class="sub-title me-2">Follow Us:</span>
                         <div class="tech-stack">
-                            <div class="tech-icon html5" title="HTML5">
-                                <i class="bi bi-facebook"></i>
-                            </div>
+                            <a class="social" href="">
+                                <div class="tech-icon html5" title="HTML5">
+                                    <i class="bi bi-facebook"></i>
+                                </div>
+                            </a>
 
                             <div class="tech-icon css3" title="CSS3">
                                 <i class="bi bi-instagram"></i>
@@ -167,7 +174,8 @@
                 <div class="col-md-3 mb-4">
                     <ul class="list-unstyled">
                         <h4 class="bold">More Information</h4>
-                        <li  class="sub-title"><a href="#" class="text-decoration-none">FAQs</a></li>
+                        <li class="sub-title"><a href="{% url 'store:faqs' %}" class="text-decoration-none">FAQs</a>
+                        </li>
                         <li class="sub-title"><a href="#" class="text-decoration-none">Blogs</a></li>
                         <li class="sub-title"><a href="#" class="text-decoration-none">Contact Us</a></li>
                     </ul>
@@ -210,10 +218,10 @@
                     Powered by:
                 </p>
                 <div class="d-flex align-items-center mt-2 mt-md-0 payment-icons">
-    <span class="sub-title me-2">We Accept:</span>
-    <i class="sub-title fa-brands fa-cc-visa fa-2x me-2"></i>
-    <i class="sub-title fa-brands fa-cc-paypal fa-2x"></i>
-</div>
+                    <span class="sub-title me-2">We Accept:</span>
+                    <i class="sub-title fa-brands fa-cc-visa fa-2x me-2"></i>
+                    <i class="sub-title fa-brands fa-cc-paypal fa-2x"></i>
+                </div>
 
             </div>
         </div>

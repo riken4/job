@@ -28,7 +28,10 @@
                         <input type="checkbox" id="cat-electronics" data-filter="category" data-value="electronics">
                         <label for="cat-electronics">Electronics <span class="filter-count">(0)</span></label>
                     </div>
-
+                    <div class="filter-option">
+                        <input type="checkbox" id="cat-cloth" data-filter="category" data-value="cloth">
+                        <label for="cat-cloth">Cloth <span class="filter-count">(0)</span></label>
+                    </div>
                 </div>
 
                 <!-- Subcategory Filter -->
@@ -49,6 +52,14 @@
                     <div class="filter-option">
                         <input type="checkbox" id="sub-snacks" data-filter="subcategory" data-value="snacks">
                         <label for="snacks">Snacks <span class="filter-count">(0)</span></label>
+                    </div>
+                     <div class="filter-option">
+                        <input type="checkbox" id="sub-t-shirt" data-filter="subcategory" data-value="t-shirt">
+                        <label for="t-shirt">T-shirt <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="sub-laptop" data-filter="subcategory" data-value="laptop">
+                        <label for="laptop">Laptop <span class="filter-count">(0)</span></label>
                     </div>
                 </div>
 
@@ -83,6 +94,14 @@
                     <div class="filter-option">
                         <input type="checkbox" id="brand-local" data-filter="brand" data-value="local">
                         <label for="brand-local">Local <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-nike" data-filter="brand" data-value="nike">
+                        <label for="brand-nike">Nike <span class="filter-count">(0)</span></label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="brand-hp" data-filter="brand" data-value="hp">
+                        <label for="brand-hp">HP <span class="filter-count">(0)</span></label>
                     </div>
                 </div>
                 <!-- Clear Filters Button -->
@@ -138,7 +157,60 @@
                             </div>
                         </a>
                     </div>
-
+                    <!-- Product 1 - Apple (Fixed data attributes) -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="cloth"
+                        data-subcategory="t-shirt" data-tag="" data-brand="nike" data-name="t-shirt">
+                        <a href="{% url 'store:product_detail' %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/T-shirt1.jpg' %}" class="img-fluid mb-2" alt="Apple"
+                                            style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-30%</div>
+                                    </div>
+                                    <h6 class="product-name">T-shirt</h6>
+                                    <p class="stock-status in-stock">
+                                        <i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            1500</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 1200</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+<!-- Product 2 - Basmati Rice (Fixed data attributes) -->
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="electronics"
+                        data-subcategory="laptop" data-tag="" data-brand="hp" data-name="laptop">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm rounded product-card">
+                                <div class="card-body">
+                                    <div class="text-center position-relative">
+                                        <img src="{% static 'images/laptop2.jpg' %}" class="img-fluid mb-2"
+                                            alt="laptop" style="max-height:160px; object-fit:contain;">
+                                        <div class="discount-badge">-30%</div>
+                                    </div>
+                                    <h6 class="product-name">Laptop</h6>
+                                    <p class="stock-status in-stock">
+                                        <i class="fas fa-check-circle"></i> In stock
+                                    </p>
+                                    <div class="price">
+                                        <span class="old-price text-muted text-decoration-line-through me-2">Rs.
+                                            150000</span>
+                                        <span class="best-price fw-bold text-danger">Rs. 120000</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mt-2">
+                                        <button type="button" class="btn btn-sm btn-success w-100">🛒 Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     <!-- Product 2 - Basmati Rice (Fixed data attributes) -->
                     <div class="col-6 col-sm-6 col-md-4 col-lg-3 mb-4 product-item" data-category="groceries"
                         data-subcategory="dairy" data-tag="organic" data-brand="local" data-name="basmati rice">

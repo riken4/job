@@ -8,15 +8,16 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="{% static 'css/product_detail.css' %}" rel="stylesheet">
 <style>
-  .body-bg {
-    background-color: #f1f0e4;
-  }
-
-  /* Slider Container */
   .container {
-    background-color: #f8f9fa;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5px;
+    gap: 30px;
     padding: 2rem;
-    border-radius: 5px;
+    animation: fadeIn 0.3s ease-in;
   }
 
   /* Main product image */
@@ -25,7 +26,7 @@
     /* smaller main image */
     max-height: 450px;
     object-fit: contain;
-    
+
   }
 
   /* Container for zoom */
@@ -33,14 +34,14 @@
     position: relative;
     overflow: hidden;
     cursor: zoom-in;
-    width:100%; 
-    max-width:400px; 
-    overflow:hidden; 
-    margin:auto;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    margin: auto;
     margin-bottom: 10px;
-        border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
-  
+
   }
 
   /* Main product image */
@@ -49,7 +50,7 @@
     /* smaller main image */
     max-height: 450px;
     object-fit: contain;
-    
+
   }
 
 
@@ -117,10 +118,13 @@
     border: 2px solid rgb(194, 194, 194);
     border-radius: 5px;
     object-fit: cover;
+    max-width: 100%;
+    height: auto;
   }
 
   .product-image-thumb.selected {
     border-color: #dc3545;
+    border: 2px solid #dc3545;
   }
 
   /* rating */
@@ -349,15 +353,7 @@
   }
 
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: #f8f9fa;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 5px;
-    gap: 30px;
-  }
+
 
   .tab-container {
     display: flex;
@@ -440,7 +436,7 @@
 
   .product-details p {
     margin-bottom: 15px;
-        padding: 8px 0;
+    padding: 8px 0;
   }
 
   .features-list {
@@ -640,6 +636,8 @@
       gap: 8px;
     }
   }
+
+  /* Custom styles for the product options */
 </style>
 {% endblock %}
 {% block content %}
@@ -649,34 +647,53 @@
     <div class="col-md-6">
       <!-- Main Image -->
       <div class="position-relative-main">
-        <img id="mainImage" src="{% static 'images/apple.jpg' %}" class="product-image-main mb-3" alt="Main Product"
+        <img id="mainImage" src="{% static 'images/laptop2.jpg' %}" class="product-image-main mb-3" alt="Main Product"
           style="width:100%; height:auto; display:block;">
       </div>
 
       <!-- Thumbnails -->
       <div class="d-flex gap-2">
-        <img src="{% static 'images/apple.jpg' %}" class="product-image-thumb selected" alt="Thumb1">
-        <img src="{% static 'images/cherry.jpg' %}" class="product-image-thumb" alt="Thumb2">
-        <img src="{% static 'images/apple.jpg' %}" class="product-image-thumb" alt="Thumb3">
+        <img src="{% static 'images/laptop2.jpg' %}" class="product-image-thumb" alt="Thumb2">
+        <img src="{% static 'images/laptop1.jpg' %}" class="product-image-thumb" alt="Thumb2">
+        <img src="{% static 'images/charger.jpg' %}" class="product-image-thumb selected" alt="Thumb">
       </div>
     </div>
 
     <!-- Right: Product Info -->
     <div class="col-md-6">
-      <h3>Apple</h3>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's standard dummy text ever since the 1500s...</p>
+      <h3>HP Laptop</h3>
+      <p>
 
-      <ul>
+        HP Laptop – Powerful performance, sleek design, and long-lasting battery for work, study, and entertainment.</p>
+
+      <!-- <ul>
         <li>Lorem Ipsum is simply dummy</li>
         <li>Lorem Ipsum is simply dummy</li>
         <li>Lorem Ipsum is simply dummy</li>
-      </ul>
+      </ul> -->
 
       <div class="price mb-3">
-        <span class=" text-muted text-decoration-line-through me-2">Rs 250</span>
-        <span class="best-price text-danger fs-4">Rs 200</span>
+        <span class=" text-muted text-decoration-line-through me-2">Rs 150000</span>
+        <span class="best-price text-danger fs-4">Rs 120000</span>
       </div>
+
+      <!-- select color -->
+      <div class="my-4">
+        <h5 class="mb-3">Color Family: <span id="selectedColorName">black</span></h5>
+        <div class="row g-2">
+          <div class="col-3 col-md-2">
+            <img src="{% static 'images/laptop2.jpg' %}" data-src="{% static 'images/laptop2.jpg' %}" data-color="Black"
+              class="product-image-thumb" alt="Product Thumbnail 1">
+          </div>
+          <div class="col-3 col-md-2">
+            <img src="{% static 'images/laptop1.jpg' %}" data-src="{% static 'images/lapotp1.jpg' %}" data-color="White"
+              class="product-image-thumb" alt="Product Thumbnail 2">
+          </div>
+        </div>
+      </div>
+      <!-- size -->
+
+
 
       <!-- Quantity + Buttons -->
       <div class="mb-3 d-flex align-items-center gap-2">
@@ -711,37 +728,38 @@
 
   <div id="product-description" class="tab-content active">
     <div class="product-header">
-      <h1 class="product-title">Apple</h1>
+      <h1 class="product-title">HP Laptop</h1>
     </div>
     <div class="product-details">
-      <p>Our Honeycrisp Apple is famous for its amazing crunch and juicy, sweet flavor. Every bite is a perfect mix of
-        sweet honey and a little bit of tang. We hand-pick them from our orchards at just the right time so you get the
-        best and freshest apple.
-
-      </p>
-<hr>
+      <p>The HP Laptop combines sleek design, reliable performance, and cutting-edge features, making it ideal for work,
+        study, and entertainment. With a powerful processor, crisp display, and long-lasting battery, it delivers smooth
+        multitasking and immersive visuals in a lightweight, portable build.
+        <hr>
       <h3>Key Features</h3>
       <div class="features-list">
         <ul>
 
-          <li><strong>Super Crunchy:</strong> It's known for its incredibly crisp texture.</li>
+          <li><strong>Powerful Performance:</strong>Equipped with the latest Intel®/AMD processor for fast and efficient
+            computing.</li>
 
-          <li><strong> Sweet:</strong> A great balance of sweetness with a hint of tartness.
+          <li><strong>Vibrant Display:</strong>Full HD screen with slim bezels for clear and sharp visuals.
           </li>
-          <li><strong>Fresh & High-Quality:</strong> Grown and picked with care for the best taste.
-          </li>
+          <li><strong>Lightweight & Portable:</strong>Slim design for easy carrying on the go.</li>
+          <li><strong>Long Battery Life:</strong>All-day power for work, entertainment, or travel.</li>
 
         </ul>
       </div>
-<hr>
+      <hr>
       <h3>Product Specifications</h3>
-      <p><strong>Origin:</strong>Grown in Mustang, Nepal<br>
-        <strong>Best Used For:</strong>Eating fresh, baking, and cooking<br>
-        <strong>Power:</strong> 1050 Watts<br>
-        <strong>How to Store:</strong>Keep it in the fridge to stay extra crisp.<br>
-        <strong>Material:</strong> Stainless steel and BPA-free plastic
+      <p><strong>Processor:</strong>Intel® Core™ i5/i7 or AMD Ryzen™ series<br>
+        <strong>RAM:</strong>8GB / 16GB DDR4 (expandable)<br>
+        <strong>Storage:</strong>256GB / 512GB SSD or 1TB HDD<br>
+        <strong>Display:</strong>14" / 15.6" Full HD (1920 × 1080)<br>
+        <strong>Graphics:</strong>Intel® Iris Xe / AMD Radeon / NVIDIA (optional)<br>
+        <strong>Battery Life:</strong>Up to 8–12 hours (depending on usage)<br>
+
       </p>
-     
+
     </div>
   </div>
 
@@ -1115,5 +1133,64 @@
       });
     });
   });
-</script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    const colorOptions = document.querySelectorAll('.color-option');
+    const sizeOptions = document.querySelectorAll('.size-option');
+    const selectedColorName = document.getElementById('selectedColorName');
+    const selectedSizeName = document.getElementById('selectedSizeName');
+    const productImage = document.querySelector('.col-md-6 img');
+
+    // Handle Color Selection
+    colorOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove 'active' class from all color options
+        colorOptions.forEach(item => item.classList.remove('active'));
+
+        // Add 'active' class to the clicked option
+        option.classList.add('active');
+
+        // Update the displayed color name
+        const colorName = option.getAttribute('data-color');
+        selectedColorName.textContent = colorName;
+
+        // Update the main product image
+        const newImageSrc = option.getAttribute('data-image');
+        productImage.src = newImageSrc;
+      });
+    });
+
+    // Handle Size Selection
+    sizeOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        // Remove 'active' class from all size options
+        sizeOptions.forEach(item => item.classList.remove('active'));
+
+        // Add 'active' class to the clicked option
+        option.classList.add('active');
+
+        // Update the displayed size name
+        const sizeName = option.getAttribute('data-size');
+        selectedSizeName.textContent = sizeName;
+      });
+    });
+
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    // Correctly select all image thumbnails
+    const thumbnails = document.querySelectorAll('.product-image-thumb');
+    const selectedColorName = document.getElementById('selectedColorName');
+
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function () {
+        // Get the color name from the data-color attribute of the clicked image
+        const colorName = this.getAttribute('data-color');
+
+        // Update the text content of the span
+        if (selectedColorName) {
+          selectedColorName.textContent = colorName;
+        }
+      });
+    });
+  });</script>
 {% endblock %}

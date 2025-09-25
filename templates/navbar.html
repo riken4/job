@@ -103,7 +103,7 @@
             flex-grow: 1;
             display: flex;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #3e3f29;
             border-radius: 5px;
             overflow: hidden;
         }
@@ -135,9 +135,9 @@
             font-size: 18px;
         }
         
-        .nav-search-button:hover {
-            background-color: #000000;
-        }
+        /* .nav-search-button:hover {
+            background-color: #ffffff;
+        } */
         
         /* Right side navigation items */
         .nav-right {
@@ -266,6 +266,7 @@
         grid-template-columns: 1fr auto auto; /* Adjusted columns for logo, menu, and cart */
         gap: 10px;
         align-items: center;
+        padding-bottom: 5px;
     }
 
     .nav-logo { grid-area: logo; }
@@ -330,7 +331,7 @@
                 <a href="{% url 'store:home' %}" class="nav-logo ">
                     <img src="{% static 'images/miteri_mart.png' %}" alt="">
                 </a>
-                <a href="#" class="nav-location">
+                <a href="{% url 'store:user_address' %}" class="nav-location">
                     <i class="bi bi-geo-alt-fill pb-1"></i>
                     <div class="nav-location-text">
                         <span class="nav-label">Deliver to</span>
@@ -377,19 +378,19 @@
                         <li><a class="dropdown-item" href="/clothing">Clothing</a></li>
                     </ul>
                 </div>
-                
-                <a href="{% url 'store:user_home' %}" class="nav-item ">
-                    <span class="nav-item-label">Hello, Riken</span>
+                <div class="account">
+                <a href="{% url 'store:user_home' %}" class="nav-item">
+                    <span class="nav-item-label">Hello, {{ user.username }}!</span>
                     <span class="nav-item-value">Account & Lists</span>
                 </a>
-                
-                <a href="#" class="nav-item">
+                </div>
+                <a href="{% url 'store:user_order' %}" class="nav-item">
                     <span class="nav-item-label">Returns</span>
                     <span class="nav-item-value">& Orders</span>
                 </a>
             </div>
             
-            <a href="#" class="nav-cart">
+            <a href="{% url 'store:cart' %}" class="nav-cart">
                 <span class="nav-cart-count">0</span>
                 <i class="bi bi-cart"></i>
                 <span class="nav-cart-label">Cart</span>
